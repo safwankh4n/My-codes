@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+ int data;                            
+ struct Node *next;                        //list
+};
+ void insertAtTheBegin(struct Node **start_ref, int data)          //** pointer to pointer 
+{
+ struct Node *ptr1 = (struct Node*)malloc(sizeof(struct Node));           //malloc to point the heap data at the beginning
+ ptr1->data = data;                               
+ ptr1->next = *start_ref;                                        //beginning of a program
+ *start_ref = ptr1;
+}
+void printList(struct Node *start)                       //print capsule
+{
+ struct Node *temp = start;
+ printf("");
+ while (temp!=NULL)
+ {
+ printf("%d ", temp->data);
+ temp = temp->next;
+ }
+}
+void bubbleSort(struct Node *start)                       //bubble sort 
+{
+ int swapped, i;                              
+ struct Node *ptr1;                                  
+ struct Node *lptr = NULL;                 
+ if (start == NULL)                                
+ return;
+ do
+ {
+ swapped = 0;
+ ptr1 = start;                                      //start of the program
+ while (ptr1->next != lptr)                                          //ptr1->next = start_ref (if start is not equal to zero) , that is it is heap of information at the beginning
+ {
+ if (ptr1->data > ptr1->next->data)                            // ptr1->data=data shold be greater than srart_ref(that is ptr1->next)
+ {
+ swap(ptr1, ptr1->next);                          
+ swapped = 1;
+ }
+ ptr1 = ptr1->next;               
+ }
+ lptr = ptr1;
+ }
+ while (swapped);
+}
+void swap(struct Node *x, struct Node *y)
+{
+ int temp = x->data;
+ x->data = y->data;                                                       //standard swap capsule {temp=x; x=y; y=temp}
+ y->data = temp;
+}
+void insertAtTheBegin(struct Node **start_ref, int data);    //start of list
+void bubbleSort(struct Node *start);                                          //sorting begins
+void swap(struct Node *x, struct Node *y);                           //swap the data
+void printList(struct Node *start);                                     //print the swapped and sorted data
+int main()                              
+{
+ int arr[] = {100, 1000, 45, 55, 66, 0, 11, 34, 89, 99};           //array declaration        
+ int list_size, i;                                                                
+ struct Node *start = NULL;                   
+ for (i = 0; i< 10; i++)                                        
+ insertAtTheBegin(&start, arr[i]);            
+ printf("Linked list before sorting ");
+ printList(start);                                             
+ bubbleSort(start);                                               
+ printf("Linked list after sorting ");
+ printList(start);                                     
+
+ return 0;
+}
