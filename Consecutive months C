@@ -1,0 +1,84 @@
+#include <stdio.h>
+
+typedef enum month {jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec} month;
+typedef struct date {month mth; int day;} date;
+
+int last, con;
+
+void today (date* pass)
+{
+    switch (pass->mth)
+    {
+        case jan: printf("January %d", pass->day); 
+        break;
+        
+        case feb: printf("February %d", pass->day);
+        break;
+        
+        case mar: printf("March %d", pass->day);
+        break;
+        
+        case apr: printf("April %d", pass->day);
+        break;
+        
+        case may: printf("May %d", pass->day);
+        break;
+        
+        case jun: printf("June %d", pass->day);
+        break;
+        
+        case jul: printf("July %d", pass->day);
+        break;
+        
+        case aug: printf("August %d", pass->day);
+        break;
+        
+        case sep: printf("September %d", pass->day);
+        break;
+        
+        case oct: printf("October %d", pass->day);
+        break;
+        
+        case nov: printf("November %d", pass->day);
+        break;
+        
+        case dec: printf("December %d", pass->day);
+        break;
+        
+     }
+    
+}
+date*tomorrow(date*pass)
+{
+    if(pass->day==last)
+    {
+        pass->day=(pass->day+1)%last;
+        pass->mth=(pass->mth+1)%12;
+    }
+    else 
+    
+    pass->day=pass->day+1;
+    return 0;
+}
+int main()
+{
+    date first_date={jan, 1};
+    date second_date={feb, 28};
+    date third_date={mar,14};
+    date fourth_date={oct, 31};
+    date fifth_date={dec, 1};
+    
+    date dates[]={first_date, second_date, third_date, fourth_date, fifth_date};
+    
+    for(con=0; con<5;con++)
+    {
+        printf("the date is");
+        today(&dates[con]);
+        
+        printf("\n the next day is");
+        tomorrow(&dates[con]);
+        today(&dates[con]);
+        
+    }
+    return 0;
+}
