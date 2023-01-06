@@ -1,0 +1,23 @@
+#include <iostream>
+#include <map>
+#include <unordered_map>
+#include <string>
+using namespace std;
+int main()
+{
+    map<unsigned long, string> worker;
+    unordered_map<unsigned long, unsigned> payroll;
+    
+    unsigned total_pay=0;
+    worker[99567800] = "Marold fish";
+    payroll[99567800] = 67300;
+    worker[8567800]= "phillip fish";
+    payroll[8567800] = 87300;
+    
+    for (auto p=worker.begin(); p!= worker.end(); ++p)
+    cout << "name \t" << (*p).second << "\t id no." << (*p).first << endl;
+    
+    for (auto p=payroll.begin(); p!= payroll.end(); ++p)
+    total_pay += (*p).second;
+    cout << "payroll totals\t" << total_pay << endl;
+}
