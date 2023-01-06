@@ -1,0 +1,23 @@
+#include<stdio.h> 
+#include<math.h> 
+#include<float.h> 
+
+
+int i;
+double Interval, Absolute, Sine_Value;
+
+double sin(double Interval);
+double abs(double Sine_Value );
+
+int main(void)
+{ 
+    for(i = 0; i <30; i++)
+        {
+            Interval = i/10.0;         
+            Sine_Value = sin(Interval); 
+            Absolute = abs(Sine_Value); 
+            printf("%lf\n", Absolute);  
+        }
+    printf("\n+++++++\n");
+    return 0;
+}
