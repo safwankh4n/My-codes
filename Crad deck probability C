@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+typedef enum { //enum declaration
+	CLUBS,
+	DIAMONDS,
+	HEARTS,
+	SPADES
+} suit;
+
+typedef struct { //struct declaration
+	suit suit;
+	short pips;
+} card;
+
+card deck[52];
+
+void shuffle(void) { //card shuffle randomization function
+	card temp;
+	int i, j;
+	for (i = 0; i < 52; i++) {
+		j = rand() % 52;
+		temp = deck[i];
+		deck[i] = deck[j];
+		deck[j] = temp;
+	}
+}
+
+int main(void) {
+	int i, j, k;
+	int noPair, onePair, twoPair, threeOfAKind, fullHouse, fourOfAKind;
+	int hand[7];
+	int count[13];
+
+	srand(time(NULL));
+//Probability Calculations
+	for (i = 0; i < 4; i++) {
+		for (j = 0; j < 13; j++) { 
+			deck[13 * i + j].suit = i;
+			deck[13 * i + j].pips = j + 1;
+		}
+	}
+
+	for (i = 0; i < 1000000; i++) {
+		shuffle();
+		for (j = 0; j < 7; j++) {
+			hand[j] = deck[j].pips;
+		}
+		for (j = 0; j < 13; j++) {
+			count[j] = 0;
+		}
+		for (j = 0; j < 7; j++) {
+			count[hand[j] - 1]++;
+		}
+		for (j = 0; j < 13; j++) {
+			if (count[j] == 1) {
+				noPair++;
+				break;
+			}
+		}
+		for (j = 0; j < 13; j++) {
+			if (count[j] == 2) {
+				onePair++;
+				break;
+			}
+		}
+		for (j = 0; j < 13; j++) {
+			if (count[j] == 2) {
+				for (k = j + 1; k < 13; k++) {
+					if (count[k] == 2) {
+						twoPair++;
+						break;
+					}
+				}
+				break;
+			}
+		}
+		for (j = 0; j < 13; j++) {
+			if (count[j] == 3) {
+				threeOfAKind++;
+				break;
+			}
+		}
+		for (j = 0; j < 13; j++) {
+			if (count[j] == 3) {
+				for (k = 0; k < 13; k++) {
+					if (count[k] == 2) {
+						fullHouse++;
+						break;
+					}
+				}
+				break;
+			}
+		}
+		for (j = 0; j < 13; j++) {
+			if (count[j] == 4) {
+				fourOfAKind++;
+				break;
+			}
+		}
+	}
+    //Print codes
+
+	printf("No pair: %.6f\n", (double) noPair / 1000000);
+	printf("One pair: %.6f\n", (double) onePair / 1000000);
+	printf("Two pair: %.6f\n", (double) twoPair / 1000000);
+	printf("Three of a kind: %.6f\n", (double) threeOfAKind / 1000000);
+	printf("Full house: %.6f\n", (double) fullHouse / 1000000);
+	printf("Four of a kind: %.6f\n", (double) fourOfAKind / 1000000);
+}
