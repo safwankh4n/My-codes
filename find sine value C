@@ -1,0 +1,26 @@
+/* Sine of the value between 0 to 1 (non-inclusive)*/
+/*Mohammed safwan khan*/
+/*23-08-2022*/
+
+
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{ 
+    double theeta;
+    double result;
+
+   theeta=0;
+   result=sin(theeta);
+   printf("/n sin(%ld)= %ld/n", theeta, result);
+
+  theeta=90;
+  result=sin(theeta);
+  printf("/n sin(%ld)= %ld/n, theeta, result);
+
+  return 0;
+
+}
+  
+ 
