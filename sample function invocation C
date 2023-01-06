@@ -1,0 +1,17 @@
+#include <stdio.h>
+int safwan(int n)
+{
+
+    n=n+n+1;
+
+  return n;
+
+}
+int main()
+{
+
+int k = 8;
+
+printf(“ safwan(k) = % d,  k = %d\n”, safwan(k), k);
+return 0;
+}
