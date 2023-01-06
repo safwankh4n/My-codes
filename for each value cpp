@@ -1,0 +1,15 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+void ittr(int &i){static int n=1; i=n++; };
+void outvec(int i){cout << i << endl; };
+
+int main()
+{
+    vector<int> v(1000);
+    
+    for_each(v.begin(), v.end(), ittr);
+    for_each(v.begin(), v.end(), outvec);
+}
