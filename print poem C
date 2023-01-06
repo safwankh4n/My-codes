@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main(void)
+{
+    printf(/n"twinkle twinkle little star"/n);
+    printf(/n"how i wonder what you are"/n):
+    printf(/n"up above the world so high"/n);
+    printf(/n"like a diamond in the sky"/n);
+    return0;
+}
