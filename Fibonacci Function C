@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+long fibonacci(int n)
+{
+    long f2=0, f1=1, f_old;
+    int i;
+    for(i=o; i<n; i++)
+    {
+        f_old=f2;
+        f2=f2+f1;
+        f1=f_old;
+    };
+    
+    return f2;
+}
+long recursive_fib(int n)
+{
+    if(n<=1)
+    return n;
+    else
+    return(recursive_fib(n-1)+recursive_fib(n-2));
+    
+}
+int main()
+{
+    int how_many=0, i;
+    printf("\n i want fibonacci table uopto n:\n");
+    scanf("%d", &how_many);
+    printf("\n fibonacci\n");
+    
+    for(i=0; i<how_many;i++)
+    printf("\n %d \t %ld\n", i, fibonacci(i), recursive_fib(i));
+    
+    return 0;
+}
