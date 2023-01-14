@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace :: std;
+
+const double m_to_k = 1.609;
+
+inline double convert(int mi)
+{
+    return (mi*m_to_k);
+}
+int main()
+{
+    int miles;
+    while (miles !=0)
+{
+    cout << "input duistance in miles" << endl;
+    cin >> miles;
+    cout << "the distance is :" << convert (miles) << endl;
+    
+}
+cout << endl;
+
+}
