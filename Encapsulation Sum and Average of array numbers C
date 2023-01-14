@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+double my_grades( int how_many, int grades[])
+{
+    int i;
+    printf("i have %d grades \n", how_many);
+    for(i=0; i<how_many; i++)
+    printf("my gardes are : %d \n", grades[i]);
+    
+}
+double my_average(int how_many, int grades[])
+{
+    int i;
+    double sum=0.0;
+     for(i=0; i<how_many; i++ )
+     sum = sum + grades[i];
+     return( sum/how_many);
+}
+
+int main (void)
+{
+ 
+int grades[5] = {34, 67, 889, 90, 45};
+
+my_grades(5, grades);
+printf("\n\n");
+
+printf("my average is : %f", my_average (5, grades));
+
+return 0;
+}
